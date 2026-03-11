@@ -1253,9 +1253,11 @@ function medal(p){
 
 if(!p) return "";
 
-if(p.startsWith("1")) return "🥇";
-if(p.startsWith("2")) return "🥈";
-if(p.startsWith("3")) return "🥉";
+const pos = parseInt(p);
+
+if(pos === 1) return "🥇";
+if(pos === 2) return "🥈";
+if(pos === 3) return "🥉";
 
 return p;
 
@@ -1265,9 +1267,11 @@ function rankClass(p){
 
 if(!p) return "";
 
-if(p.startsWith("1")) return "rank1";
-if(p.startsWith("2")) return "rank2";
-if(p.startsWith("3")) return "rank3";
+const pos = parseInt(p);
+
+if(pos === 1) return "rank1";
+if(pos === 2) return "rank2";
+if(pos === 3) return "rank3";
 
 return "";
 
@@ -1480,6 +1484,7 @@ Torneio de Natação GCP – 4ª Edição
 </footer>
 </body>
 </html>
+
 
 
 
