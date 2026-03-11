@@ -1363,8 +1363,8 @@ return html;
 
 }
 
-const provaNome=btn?btn.textContent.trim():"Prova";
-
+const provaNome = currentButton ? currentButton.textContent.trim() : "Prova";
+  
 document.getElementById("teamScores").innerHTML=
 
 buildTeams("Pontuação "+provaNome,raceTeams)+
@@ -1477,4 +1477,5 @@ Torneio de Natação GCP – 4ª Edição
 </footer>
 </body>
 </html>
+
 
