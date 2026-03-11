@@ -1123,8 +1123,11 @@ document.getElementById("homePage").style.display="none";
 
 history.replaceState(null,null,"index.html?race="+sheet);
 
-currentSheet=sheet;
-currentButton=btn;
+currentSheet = sheet;
+
+if(btn){
+currentButton = btn;
+}
 
 document.querySelector(".menu").classList.remove("open");
 document.querySelector(".overlay").classList.remove("show");
@@ -1477,5 +1480,6 @@ Torneio de Natação GCP – 4ª Edição
 </footer>
 </body>
 </html>
+
 
 
