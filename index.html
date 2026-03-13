@@ -942,7 +942,7 @@ try{
 CLASSIFICAÇÃO GERAL
 ===================== */
 
-const url=`https://opensheet.elk.sh/${spreadsheet}/M25L`;
+const url=`https://opensheet.elk.sh/${spreadsheet}/SCOREBOARD`;
 
 const res=await fetch(url,{cache:"no-store"});
 
@@ -1012,13 +1012,13 @@ try{
 
 const url=`https://opensheet.elk.sh/${spreadsheet}/${race.sheet}`;
 
-const res=await fetch(url,{cache:"no-store"});
-if(!res.ok) continue;
+const res = await fetch(url,{cache:"no-store"});
+const data = await res.json();
 
-const data=await res.json();
+let racesHtml="<div class='home-races-grid'>";
 
+let currentRace=null;
 let teams=[];
-let readingRace=true;
 
 data.forEach(row=>{
 
@@ -1027,16 +1027,27 @@ const pontos=row["PONTOS"];
 
 if(!equipa) return;
 
-if(equipa==="EQUIPA") return;
+/* nova prova */
 
-if(equipa.includes("25M") || equipa.includes("50M") || equipa.includes("100M")) return;
+if(!pontos){
 
-if(equipa==="TOTAL"){
-readingRace=false;
-return;
+if(currentRace){
+renderRaceCard();
 }
 
-if(readingRace && !isNaN(pontos)){
+currentRace=equipa;
+teams=[];
+return;
+
+}
+
+/* ignorar header */
+
+if(equipa==="EQUIPA") return;
+
+/* adicionar equipa */
+
+if(!isNaN(pontos)){
 teams.push({
 equipa:equipa,
 pontos:parseInt(pontos)
@@ -1045,18 +1056,22 @@ pontos:parseInt(pontos)
 
 });
 
+/* última prova */
+
+if(currentRace){
+renderRaceCard();
+}
+
+function renderRaceCard(){
+
 teams.sort((a,b)=>b.pontos-a.pontos);
 
-if(!teams.length) continue;
-
-racesHtml+=`<div class="race-card"><h4>${race.nome}</h4>`;
+racesHtml+=`<div class="race-card"><h4>${currentRace}</h4>`;
 
 teams.forEach((t,i)=>{
 
 let medal="";
 let cls="";
-
-/* só atribuir medalha se tiver pontos */
 
 if(t.pontos>0){
 
@@ -1076,12 +1091,6 @@ racesHtml+=`
 });
 
 racesHtml+="</div>";
-
-}catch(e){
-
-console.error("Erro prova",race.sheet);
-
-}
 
 }
 
@@ -1484,6 +1493,7 @@ Torneio de Natação GCP – 4ª Edição
 </footer>
 </body>
 </html>
+
 
 
 
