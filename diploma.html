@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Diplomas – Torneio GCP</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+
+<script data-goatcounter="https://gcptorneio.goatcounter.com/count"
+async src="//gc.zgo.at/count.js"></script>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="header-left">
+
+<img src="img/logo.svg">
+
+<div class="header-text">
+<h1>Torneio de Natação GCP – 4ª Edição (2025/2026)</h1>
+<div class="header-sub">📍 Piscina Campo de Ourique • 📅 15 Março 2026</div>
+</div>
+
+</div>
+
+</header>
+
+<div class="layout">
+
+<div class="menu">
+
+<div class="menu-block inicio-menu">
+<button onclick="window.location.href='index.html'">
+🏠 Página Inicial
+</button>
+</div>
+
+</div>
+
+<div class="content">
+
+<div class="race-title">
+🎓 Diplomas - Procurar Atleta
+</div>
+
+<div class="diploma-search">
+
+<input
+id="searchAthlete"
+placeholder="🔎 Procurar por nome ou nº atleta"
+oninput="searchAthlete()"
+/>
+
+</div>
+
+<div id="athleteResults"></div>
+
+</div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script src="js/app.js" defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/diploma.js"></script>
+
+<div id="diplomaTemplate" class="diploma-pdf">
+
+<div class="diploma-header">
+<img src="img/logo-gcp.jpg">
+<h1>Torneio de Natação GCP 4ª Edição (2025/2026)</h1>
+<h2>Diploma de Participação</h2>
+</div>
+
+<div class="diploma-body">
+
+<div class="diploma-name" id="pdfNome"></div>
+
+<div class="diploma-info" id="pdfInfo"></div>
+
+<div id="pdfResultados"></div>
+
+</div>
+
+<div class="diploma-footer">
+15 Março 2026 • Piscina Campo de Ourique
+</div>
+
+</div>
+
+</body>
+</html>

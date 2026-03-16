@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Torneio de Natação GCP – 4ª Edição</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+
+<script data-goatcounter="https://gcptorneio.goatcounter.com/count"
+async src="//gc.zgo.at/count.js"></script>
+
+
+</head>
+
+<body>
+<div class="overlay" onclick="toggleMenu()"></div>
+<header>
+
+<div class="header-left">
+
+<img src="img/logo.svg">
+
+<div class="header-text">
+<h1>Torneio de Natação GCP – 4ª Edição (2025/2026)</h1>
+<div class="header-sub">📍 Piscina Campo de Ourique • 📅 15 Março 2026</div>
+</div>
+
+</div>
+
+</header>
+
+<div class="header-gap"></div>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰ Provas</button>
+
+<div class="layout">
+
+<div class="menu">
+
+<div class="menu-block inicio-menu">
+<button id="homeBtn" onclick="loadHome(this)">🏠 Página Inicial</button>
+<button onclick="window.location.href='diploma.html'">🎓 Diplomas</button>
+</div>
+
+<div class="menu-block cadetes-menu">
+
+<h3>Cadetes | Infantis</h3>
+
+<button onclick="loadResults('F25C',this)">↩️ 25m COSTAS ♀️</button> <button onclick="loadResults('M25C',this)">↩️ 25m COSTAS ♂️</button>
+
+<button onclick="loadResults('F25B',this)">🐸 25m BRUÇOS ♀️</button> <button onclick="loadResults('M25B',this)">🐸 25m BRUÇOS ♂️</button>
+
+<button onclick="loadResults('F25M',this)">🦋 25m MARIPOSA ♀️</button> <button onclick="loadResults('M25M',this)">🦋 25m MARIPOSA ♂️</button>
+
+<button onclick="loadResults('F25L',this)">🏊 25m LIVRES ♀️</button> <button onclick="loadResults('M25L',this)">🏊 25m LIVRES ♂️</button>
+
+<button onclick="loadResults('F100E',this)">🔄 100m ESTILOS ♀️</button> <button onclick="loadResults('M100E',this)">🔄 100m ESTILOS ♂️</button>
+
+</div>
+
+<div class="menu-block juvenis-menu">
+
+<h3>Juvenis | Juniores</h3>
+
+<button onclick="loadResults('F50C',this)">↩️ 50m COSTAS ♀️</button> <button onclick="loadResults('M50C',this)">↩️ 50m COSTAS ♂️</button>
+
+<button onclick="loadResults('F50B',this)">🐸 50m BRUÇOS ♀️</button> <button onclick="loadResults('M50B',this)">🐸 50m BRUÇOS ♂️</button>
+
+<button onclick="loadResults('F50M',this)">🦋 50m MARIPOSA ♀️</button> <button onclick="loadResults('M50M',this)">🦋 50m MARIPOSA ♂️</button>
+
+<button onclick="loadResults('F50L',this)">🏊 50m LIVRES ♀️</button> <button onclick="loadResults('M50L',this)">🏊 50m LIVRES ♂️</button>
+
+<button onclick="loadResults('F100E',this)">🔄 100m ESTILOS ♀️</button> <button onclick="loadResults('M100E',this)">🔄 100m ESTILOS ♂️</button>
+
+</div>
+
+</div>
+
+<div class="content">
+
+<div class="race-title">
+<div id="raceTitle">🏊 Torneio de Natação GCP</div>
+<div id="raceSub" class="race-sub">Resumo da competição</div>
+<span id="viewerCount">👥 -- pessoas a acompanhar</span>
+<div class="race-legend">
+<span class="legend-x"><b>X</b> Inscrito</span>
+<span class="legend-dns"><b>DNS</b> Não compareceu</span>
+<span class="legend-dnf"><b>DNF</b> Não terminou</span>
+<span class="legend-dsq"><b>DSQ</b> Desclassificado</span>
+
+<span class="legend-update">
+⏱ Última atualização:
+<span id="lastUpdate">--:--:--</span>
+• próxima em
+<span id="refreshTimer">30</span>s
+</span>
+</div>
+
+</div>
+
+<div id="homePage" class="dashboard">
+
+<div class="card">
+<h3>📊 Pontuação das Provas</h3>
+<div id="homeRaces"></div>
+</div>
+
+</div>
+
+<h2 id="cadetesTitle" class="cadetes">Cadetes</h2>
+<div id="cadetes"></div>
+
+<h2 id="infantisTitle" class="infantis">Infantis</h2>
+<div id="infantis"></div>
+
+<h2 id="juvenisTitle" class="juvenis">Juvenis</h2>
+<div id="juvenis"></div>
+
+<h2 id="junioresTitle" class="juniores">Juniores</h2>
+<div id="juniores"></div>
+
+</div>
+
+<div class="teams-panel" id="rightColumn">
+
+<div class="teams-box" id="generalBox">
+<h3>🏆 Classificação Geral</h3>
+<div id="homeGeneral"></div>
+</div>
+
+<div class="teams-box" id="raceBox">
+<div id="teamScores"></div>
+</div>
+
+<div class="teams-box sponsor-box">
+<h3>🙏 Agradecimento</h3>
+<a href="https://www.h2ovita.com/pt/nadar/escola-de-natacao" target="_blank" class="sponsor">
+<img src="img/logo_h2o-vita.png">
+</a>
+
+<a href="https://www.jf-parquedasnacoes.pt/autarquia/10-desporto/27" target="_blank" class="sponsor">
+<img src="img/logo_oriente.png">
+</a>
+
+<a href="https://www.proswim.pt/" target="_blank" class="sponsor">
+<img src="img/logo_proswim-academy.png">
+</a>
+</div>
+
+</div>
+
+</div>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script src="js/app.js" defer></script>
+
+<footer>
+Ginásio Clube Português • Piscina Campo de Ourique<br>
+Torneio de Natação GCP – 4ª Edição
+</footer>
+</body>
+</html>
+
+
+
+
+
