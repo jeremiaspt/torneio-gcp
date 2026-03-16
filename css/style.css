@@ -1,1 +1,772 @@
+body{
+font-family:Arial, Helvetica, sans-serif;
+margin:0;
+background:#eef2f6;
+}
 
+/* HEADER */
+
+header{
+background:#0c2d57;
+color:white;
+padding:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:15px;
+text-align:left;
+}
+
+.header-text{
+display:flex;
+flex-direction:column;
+}
+
+header img{
+height:60px;
+}
+
+.header-text h1{
+margin:0;
+font-size:22px;
+}
+
+.header-sub{
+font-size:14px;
+opacity:0.9;
+margin-top:4px;
+}
+
+.menu-toggle{
+display:none;
+background:#0c2d57;
+color:white;
+border:none;
+padding:10px 14px;
+font-size:16px;
+cursor:pointer;
+width:100%;
+border-top:1px solid rgba(0,0,0,0.1);
+border-bottom:1px solid rgba(0,0,0,0.1);
+font-weight:bold;
+letter-spacing:0.5px;
+margin-top:12px;
+}
+
+.header-gap{
+height:2px;
+background:#eef2f6;
+}
+
+@media (max-width:700px){
+
+header{
+flex-direction:column;
+gap:10px;
+}
+
+header img{
+height:70px;
+}
+
+}
+
+/* LAYOUT */
+
+.layout{
+display:grid;
+grid-template-columns:220px 1fr 290px;
+gap:20px;
+max-width:1400px;
+margin:auto;
+padding:20px;
+}
+
+/* RESULTADOS */
+
+.content{
+min-width:0;
+}
+
+/* ESCALÕES */
+
+.cadetes{background:#d4edbc;padding:8px;border-radius:6px;margin-top:30px;}
+.infantis{background:#e6cff2;padding:8px;border-radius:6px;margin-top:30px;}
+.juvenis{background:#bfe1f6;padding:8px;border-radius:6px;margin-top:30px;}
+.juniores{background:#ffc8aa;padding:8px;border-radius:6px;margin-top:30px;}
+
+/* TABELA */
+
+table{
+border-collapse:collapse;
+width:100%;
+background:white;
+margin-top:10px;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+th,td{
+padding:8px;
+border-bottom:1px solid #eee;
+word-break:normal;
+overflow-wrap:break-word;
+white-space:normal;
+}
+
+th{
+background:#0c2d57;
+color:white;
+}
+
+td.center, th.center{
+text-align:center;
+}
+
+tbody tr:nth-child(even){
+background:#f4f6f8;
+}
+
+tbody tr:nth-child(odd){
+background:#ffffff;
+}
+
+tbody tr:hover{
+filter:brightness(0.97);
+}
+
+td.col-tempo{
+letter-spacing:0.5px;
+font-weight:bold;
+text-align:center;
+}
+
+.col-num{width:60px}
+.col-clube{width:80px}
+.col-tempo{width:90px}
+.col-pos{width:60px}
+.col-pontos{width:70px}
+
+.rank1{
+background:#fff8d6 !important;
+}
+
+.rank2{
+background:#e3edf7 !important;
+}
+
+.rank3{
+background:#ffe9dc !important;
+}
+
+/* MENU LATERAL */
+
+.menu{
+position:sticky;
+top:10px;
+border-right:2px solid #e3e7ee;
+padding-right:15px;
+}
+
+.menu-block{
+padding:10px;
+border-radius:10px;
+margin-bottom:14px;
+}
+
+.menu-block h3{
+margin-top:0;
+text-align:center;
+padding:4px 6px;
+border-radius:6px;
+font-size:14px;
+font-weight:bold;
+letter-spacing:0.5px;
+border:2px solid #0c2d57;
+color:#0c2d57;
+margin:0 4px 6px 4px;
+}
+
+.cadetes-menu h3{
+background:linear-gradient(
+90deg,
+#d4edbc 0%,
+#d4edbc 45%,
+#e6cff2 55%,
+#e6cff2 100%
+);
+}
+
+.juvenis-menu h3{
+background:linear-gradient(
+90deg,
+#bfe1f6 0%,
+#bfe1f6 45%,
+#ffc8aa 55%,
+#ffc8aa 100%
+);
+}
+
+/* cores escalões */
+
+.inicio-menu{
+background:linear-gradient(
+90deg,
+#7fa6d9 0%,
+#7fa6d9 30%,
+#dfe6f2 50%,
+#a7c4ea 70%,
+#a7c4ea 100%
+);
+}
+
+.cadetes-menu{
+background:linear-gradient(
+90deg,
+#d4edbc 0%,
+#d4edbc 30%,
+#dfe6e1 50%,
+#e6cff2 70%,
+#e6cff2 100%
+);
+}
+
+.juvenis-menu{
+background:linear-gradient(
+90deg,
+#bfe1f6 0%,
+#bfe1f6 30%,
+#e3e3e3 50%,
+#ffc8aa 70%,
+#ffc8aa 100%
+);
+}
+
+.menu-block button{
+display:block;
+width:100%;
+margin:3px 0;
+padding:6px 8px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+background:white;
+font-size:13px;
+font-weight:bold;
+}
+
+.menu-block button:hover{
+background:#e8eef7;
+}
+
+.menu-block button.active{
+background:#0c2d57;
+color:white;
+font-weight:bold;
+}
+
+.race-title{
+margin-top:0;
+margin-bottom:20px;
+background:white;
+padding:14px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+line-height:1.4;
+scroll-margin-top:70px;
+font-weight:bold;
+}
+
+.race-sub{
+font-size:14px;
+color:#555;
+margin-top:4px;
+}
+
+
+/* MOBILE */
+
+@media (max-width:900px){
+
+header{
+flex-direction:column;
+align-items:center;
+text-align:center;
+gap:10px;
+}
+
+.header-left{
+flex-direction:column;
+}
+
+.menu-toggle{
+display:block;
+position:sticky;
+top:0;
+z-index:500;
+background:#0c2d57;
+color:white;
+padding:12px;
+font-size:16px;
+font-weight:bold;
+border:none;
+box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+table{
+table-layout:auto;
+font-size:14px;
+}
+
+.col-num{width:50px}
+.col-clube{width:60px}
+.col-tempo{width:70px}
+.col-pos{width:50px}
+.col-pontos{width:50px}
+
+.layout{
+grid-template-columns:1fr;
+}
+
+/* painel lateral */
+
+.menu{
+position:fixed;
+top:0;
+left:-220px;
+width:200px;
+height:100%;
+background:#ffffff;
+border-right:2px solid #e3e7ee;
+padding:15px;
+overflow-y:auto;
+transition:left 0.3s ease;
+z-index:1000;
+}
+
+.menu.open{
+left:0;
+}
+
+/* botão menu */
+
+.menu-toggle{
+display:block;
+}
+
+}
+
+@media (max-width:900px){
+td{
+font-size:13px;
+}
+}
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+display:none;
+z-index:900;
+}
+
+.overlay.show{
+display:block;
+}
+
+.race-legend{
+margin-top:6px;
+font-size:11px;
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+opacity:0.85;
+}
+
+.race-legend span{
+padding:2px 6px;
+border-radius:4px;
+}
+
+/* cores */
+
+.legend-x{
+background:#d4edbc;
+color:#2e6b2e;
+}
+
+.legend-dns{
+background:#ffe0b3;
+color:#a65c00;
+}
+
+.legend-dnf{
+background:#ffd6d6;
+color:#b30000;
+}
+
+.legend-dsq{
+background:#ffb3b3;
+color:#990000;
+}
+
+.legend-update{
+margin-left:auto;
+font-size:11px;
+color:#555;
+}
+
+/* estados do tempo */
+
+.tempo-x{
+background:#d4edbc;
+color:#2e6b2e;
+font-weight:bold;
+}
+
+.tempo-dns{
+background:#ffe0b3;
+color:#a65c00;
+font-weight:bold;
+}
+
+.tempo-dnf{
+background:#ffd6d6;
+color:#b30000;
+font-weight:bold;
+}
+
+.tempo-dsq{
+background:#ffb3b3;
+color:#990000;
+font-weight:bold;
+}
+
+.pontos-score{
+font-weight:bold;
+color:#0c2d57;
+}
+
+.table-update{
+animation:updateFlash 0.6s ease;
+}
+
+@keyframes updateFlash{
+0%{background:#fff8cc;}
+100%{background:transparent;}
+}
+
+.team-table{
+margin-top:10px;
+margin-bottom:12px;
+border-collapse:collapse;
+font-size:13px;
+width:100%;
+table-layout:fixed;
+}
+
+.team-table th{
+background:#0c2d57;
+color:white;
+padding:4px 8px;
+}
+
+.team-table td{
+padding:4px 8px;
+border-bottom:1px solid #ddd;
+}
+
+.team-table td:last-child{
+text-align:center;
+font-weight:bold;
+}
+
+
+
+/* MOBILE */
+
+
+.teams-panel{
+position:sticky;
+top:10px;
+align-self:start;
+}
+
+.teams-box{
+background:white;
+padding:12px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.teams-box h3{
+margin-top:0;
+font-size:16px;
+}
+
+.team-gold{
+background:#fff4cc !important;
+font-weight:bold;
+}
+
+.dashboard{
+display:grid;
+}
+
+.card{
+background:white;
+padding:16px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card h3{
+margin-top:0;
+}
+
+.home-table{
+width:100%;
+border-collapse:collapse;
+font-size:14px;
+}
+
+.home-table td{
+padding:6px;
+border-bottom:1px solid #eee;
+}
+
+.home-races-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+margin-top:10px;
+}
+
+@media (max-width:1200px){
+.home-races-grid{
+grid-template-columns:repeat(3,1fr);
+}
+}
+
+@media (max-width:900px){
+.home-races-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media (max-width:600px){
+.home-races-grid{
+grid-template-columns:1fr;
+}
+}
+
+.race-card{
+background:white;
+padding:12px;
+border-radius:10px;
+box-shadow:0 2px 6px rgba(0,0,0,0.08);
+font-size:13px;
+min-height:90px;
+}
+
+.race-card h4{
+margin:0 0 6px 0;
+font-size:12px;
+font-weight:bold;
+
+background:#0c2d57;
+color:white;
+
+padding:1px 2px;
+border-top-left-radius:6px;
+border-top-right-radius:6px;
+
+text-align:center;
+}
+
+.race-card div{
+display:flex;
+justify-content:space-between;
+padding:4px 6px;
+border-radius:4px;
+}
+
+.race-card div span:last-child{
+min-width:22px;
+text-align:right;
+font-weight:bold;
+}
+
+.race-card div span:first-child{
+display:flex;
+align-items:center;
+gap:4px;
+}
+
+.race-card div:nth-child(even){
+background:#f6f8fb;
+}
+
+.race-card div:hover{
+background:#eaf2ff;
+}
+
+.gold{color:#c9a000;font-weight:bold;}
+.silver{color:#666;}
+.bronze{color:#b87333;}
+
+@media (max-width:900px){
+.home-races-grid{
+grid-template-columns:1fr;
+}
+}
+
+.legend-hidden{
+display:none !important;
+}
+
+.sponsor-box{
+margin-top:14px;
+text-align:left;
+}
+
+.sponsor{
+display:block;
+margin:10px 0;
+}
+
+.sponsor{
+aspect-ratio:3/1;
+display:flex;
+align-items:center;
+justify-content:center;
+background:white;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+margin:10px 0;
+padding:6px;
+}
+
+.sponsor img{
+max-width:100%;
+max-height:100%;
+object-fit:contain;
+}
+
+#viewerCount{
+font-size:11px;
+color:#444;
+margin-left:10px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+margin-top:40px;
+font-size:13px;
+color:#666;
+background:#f3f5f8;
+border-top:1px solid #ddd;
+}
+
+.diploma-search{
+background:white;
+padding:15px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+margin-top:10px;
+}
+
+.diploma-search input{
+width:100%;
+padding:10px;
+font-size:16px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.athlete-card{
+background:white;
+padding:15px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+margin-top:15px;
+}
+
+.result-row{
+display:flex;
+justify-content:space-between;
+padding:6px 0;
+border-bottom:1px solid #eee;
+}
+
+.download-btn{
+margin-top:12px;
+padding:10px 16px;
+background:#0c2d57;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.diploma-pdf{
+width:1000px;
+padding:60px;
+background:white;
+border:8px solid #0c2d57;
+text-align:center;
+font-family:Arial;
+position:absolute;
+left:-9999px;
+}
+
+.diploma-header img{
+height:80px;
+margin-bottom:10px;
+}
+
+.diploma-header h1{
+margin:5px;
+color:#0c2d57;
+}
+
+.diploma-header h2{
+margin:5px;
+font-weight:normal;
+}
+
+.diploma-name{
+font-size:36px;
+font-weight:bold;
+margin:30px 0;
+}
+
+.diploma-info{
+font-size:16px;
+margin-bottom:25px;
+}
+
+.diploma-result{
+display:flex;
+justify-content:center;
+gap:40px;
+margin:4px 0;
+font-size:16px;
+}
+
+.diploma-footer{
+margin-top:40px;
+font-size:14px;
+}
