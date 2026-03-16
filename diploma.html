@@ -36,14 +36,17 @@ async src="//gc.zgo.at/count.js"></script>
 
 </header>
 
+<div class="header-gap"></div>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰ Provas</button>
+
 <div class="layout">
 
 <div class="menu">
 
 <div class="menu-block inicio-menu">
-<button onclick="window.location.href='index.html'">
-🏠 Página Inicial
-</button>
+<button onclick="window.location.href='index.html'">🏠 Página Inicial</button>
+<button id="homeBtn" onclick="loadHome(this)">🎓 Diplomas</button>
 </div>
 
 </div>
@@ -67,16 +70,33 @@ oninput="searchAthlete()"
 <div id="athleteResults"></div>
 
 </div>
+<div class="teams-panel" id="rightColumn">
+
+<div class="teams-box" id="sponsor-box">
+<h3>🙏 Agradecimento</h3>
+<a href="https://www.h2ovita.com/pt/nadar/escola-de-natacao" target="_blank" class="sponsor">
+<img src="img/logo_h2o-vita.png">
+</a>
+
+<a href="https://www.jf-parquedasnacoes.pt/autarquia/10-desporto/27" target="_blank" class="sponsor">
+<img src="img/logo_oriente.png">
+</a>
+
+<a href="https://www.proswim.pt/" target="_blank" class="sponsor">
+<img src="img/logo_proswim-academy.png">
+</a>
+</div>
 
 </div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/diploma.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 <script src="js/app.js" defer></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="js/diploma.js"></script>
 
 <div id="diplomaTemplate" class="diploma-pdf">
 
