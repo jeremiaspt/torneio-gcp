@@ -1,3 +1,15 @@
+const PROVAS = [
+"25M LIVRES",
+"50M LIVRES",
+"25M MARIPOSA",
+"50M MARIPOSA",
+"25M COSTAS",
+"50M COSTAS",
+"25M BRUÇOS",
+"50M BRUÇOS",
+"100M ESTILOS"
+];
+
 let atletas = [];
 
 async function loadAthletes(){
@@ -7,7 +19,11 @@ const url =
 
 const res = await fetch(url);
 
-atletas = await res.json();
+const data = await res.json();
+
+atletas = data.filter(a =>
+PROVAS.some(p => isValidTime(a[p]))
+);
 
 }
 
@@ -33,18 +49,6 @@ const match =
 (a["NOME"] && a["NOME"].toLowerCase().includes(q)) ||
 (a["ATLETA Nº"] && a["ATLETA Nº"].toString().includes(q));
 
-const provas = [
-"25M LIVRES",
-"50M LIVRES",
-"25M MARIPOSA",
-"50M MARIPOSA",
-"25M COSTAS",
-"50M COSTAS",
-"25M BRUÇOS",
-"50M BRUÇOS",
-"100M ESTILOS"
-];
-
 const temTempoValido = provas.some(p => isValidTime(a[p]));
 
 return match && temTempoValido;
@@ -59,9 +63,14 @@ function isValidTime(t){
 
 if(!t) return false;
 
+t = t.toString().trim().toUpperCase();
+
 const invalid = ["X","DNF","DNS","DSQ",""];
 
-return !invalid.includes(t.trim().toUpperCase());
+if(invalid.includes(t)) return false;
+
+// valida formato tempo: 0:00.00
+return /^\d+:\d{2}\.\d{2}$/.test(t);
 
 }
 
@@ -86,21 +95,7 @@ ${a["ESCALÃO"]}
 </div>
 `;
 
-const provas = [
-
-"25M LIVRES",
-"50M LIVRES",
-"25M MARIPOSA",
-"50M MARIPOSA",
-"25M COSTAS",
-"50M COSTAS",
-"25M BRUÇOS",
-"50M BRUÇOS",
-"100M ESTILOS"
-
-];
-
-provas.forEach(p => {
+PROVAS.forEach(p => {
 
 const tempo = a[p];
 
@@ -118,7 +113,7 @@ html += `
 });
 
 html += `
-<button class="download-btn" onclick="gerarDiploma(${atletas.indexOf(a)})">
+<button class="download-btn" onclick="gerarDiploma('${a["ATLETA Nº"]}')">
 ⬇️ Download Diploma
 </button>
 
@@ -172,24 +167,10 @@ const resultados = document.getElementById("pdfResultados");
 
 resultados.innerHTML="";
 
-const provas=[
-
-"25M LIVRES",
-"50M LIVRES",
-"25M MARIPOSA",
-"50M MARIPOSA",
-"25M COSTAS",
-"50M COSTAS",
-"25M BRUÇOS",
-"50M BRUÇOS",
-"100M ESTILOS"
-
-];
-
 let listaResultados = [];
 
 // recolher apenas as provas feitas
-provas.forEach(p=>{
+PROVAS.forEach(p=>{
 
 const tempo = atleta[p];
 
