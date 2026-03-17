@@ -177,7 +177,7 @@ resultados.innerHTML+=`
 });
 
 const canvas = await html2canvas(template, {
-  scale: 3,
+  scale: 4,
   useCORS: true
 });
 
