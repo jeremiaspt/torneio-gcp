@@ -233,19 +233,13 @@ const team = prompt("Nome da equipa:");
 if(!team) return;
 
 const atletasEquipa = atletas.filter(a =>
-a.clube && a.clube.toLowerCase() === team.toLowerCase()
+a["CLUBE"] &&
+a["CLUBE"].toLowerCase().includes(team.toLowerCase())
 );
 
-console.log("Atletas encontrados:", atletasEquipa);
+console.log("Encontrados:", atletasEquipa);
 
 alert(atletasEquipa.length + " atletas encontrados");
-
-if(atletasEquipa.length === 0){
-alert("Nenhum atleta encontrado.");
-return;
-}
-
-gerarDiplomasLote(atletasEquipa);
 
 }
 
