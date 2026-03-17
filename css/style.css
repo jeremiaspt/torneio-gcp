@@ -808,19 +808,22 @@ align-items:center;
 .diploma-signature{
 margin-top:20px;
 text-align:center;
+position:relative;
 }
 
 .signature-img{
-height:100px;
-margin-bottom:4px;
+height:60px;
+position:relative;
+z-index:2;   /* assinatura por cima */
 }
 
 .signature-line{
 width:220px;
 height:1px;
 background:#000;
-margin-top:-10px;
-margin-bottom:4px;
+margin:-20px auto 4px auto;
+position:relative;
+z-index:1;   /* linha por trás */
 }
 
 .signature-text{
