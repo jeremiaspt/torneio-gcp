@@ -271,12 +271,12 @@ saveAs(content,"diplomas_equipa.zip");
 
 }
 
-async function gerarPDFdoAtleta(atleta){
+async function gerarPDFdoAtleta(atletaObj){
 
-// usar o mesmo atleta que o sistema usa
-selectedAthlete = atleta;
+// usar a mesma variável global do site
+window.atleta = atletaObj;
 
-// atualizar o template
+// atualizar template
 gerarDiploma();
 
 await new Promise(r => setTimeout(r,80));
