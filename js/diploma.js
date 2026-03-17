@@ -47,10 +47,6 @@ const results = atletas.filter(a =>
 (a["NOME"] && a["NOME"].toLowerCase().includes(q)) ||
 (a["ATLETA Nº"] && a["ATLETA Nº"].toString().includes(q))
 );
-  
-return match && temTempoValido;
-
-});
 
 renderAthletes(results);
 
