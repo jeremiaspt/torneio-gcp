@@ -159,22 +159,40 @@ const provas=[
 
 ];
 
+let listaResultados = [];
+
+// recolher apenas as provas feitas
 provas.forEach(p=>{
 
 const tempo = atleta[p];
 
 if(tempo && tempo!=="X"){
-
-resultados.innerHTML+=`
-<div class="diploma-result">
-<span>${p}</span>
-<span>${tempo}</span>
-</div>
-`;
-
+listaResultados.push({prova:p, tempo:tempo});
 }
 
 });
+
+// criar sempre 4 linhas fixas
+for(let i=0;i<4;i++){
+
+const linha = document.createElement("div");
+linha.className="diploma-result";
+
+if(listaResultados[i]){
+linha.innerHTML=`
+<span>${listaResultados[i].prova}</span>
+<span>${listaResultados[i].tempo}</span>
+`;
+}else{
+linha.innerHTML=`
+<span>&nbsp;</span>
+<span>&nbsp;</span>
+`;
+}
+
+resultados.appendChild(linha);
+
+}
 
 const canvas = await html2canvas(template, {
   scale: 4,
