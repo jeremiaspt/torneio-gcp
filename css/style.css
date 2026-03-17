@@ -804,3 +804,24 @@ row-gap:6px;
 justify-items:center;
 align-items:center;
 }
+
+.diploma-signature{
+margin-top:20px;
+text-align:center;
+}
+
+.signature-img{
+height:60px;
+margin-bottom:4px;
+}
+
+.signature-line{
+width:220px;
+height:1px;
+background:#000;
+margin:4px auto;
+}
+
+.signature-text{
+font-size:14px;
+}
