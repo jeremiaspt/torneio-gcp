@@ -176,16 +176,22 @@ resultados.innerHTML+=`
 
 });
 
-const canvas = await html2canvas(template);
+const canvas = await html2canvas(template, {
+  scale: 3,
+  useCORS: true
+});
 
-const img = canvas.toDataURL("image/png");
+const imgData = canvas.toDataURL("image/png");
 
 const { jsPDF } = window.jspdf;
 
-const pdf = new jsPDF("landscape");
+const pdf = new jspdf.jsPDF({
+    orientation: "landscape",
+    unit: "mm",
+    format: "a4"
+});
 
-pdf.addImage(img,"PNG",10,10,270,180);
-
+pdf.addImage(imgData, "PNG", 0, 0, 297, 210);
 pdf.save("diploma_"+atleta["NOME"]+".pdf");
 
 }
