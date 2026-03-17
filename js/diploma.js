@@ -237,9 +237,14 @@ a["CLUBE"] &&
 a["CLUBE"].toLowerCase().includes(team.toLowerCase())
 );
 
-console.log("Encontrados:", atletasEquipa);
+if(atletasEquipa.length === 0){
+alert("Nenhum atleta encontrado.");
+return;
+}
 
 alert(atletasEquipa.length + " atletas encontrados");
+
+gerarDiplomasLote(atletasEquipa);
 
 }
 
@@ -249,14 +254,18 @@ const zip = new JSZip();
 
 for(const atleta of lista){
 
+// gerar diploma no template
 gerarDiploma(atleta);
 
-await new Promise(r => setTimeout(r,100));
+// pequeno delay para render
+await new Promise(r => setTimeout(r,120));
 
-const canvas = await html2canvas(
-document.getElementById("diplomaTemplate"),
-{scale:3}
-);
+const element = document.getElementById("diplomaTemplate");
+
+const canvas = await html2canvas(element,{
+scale:3,
+useCORS:true
+});
 
 const imgData = canvas.toDataURL("image/png");
 
@@ -270,10 +279,14 @@ pdf.addImage(imgData,"PNG",10,10,277,190);
 
 const blob = pdf.output("blob");
 
-zip.file(`${atleta.nome}.pdf`, blob);
+// nome do ficheiro
+const nome = atleta["NOME"] || atleta["Nome"] || "atleta";
+
+zip.file(`${nome}.pdf`, blob);
 
 }
 
+// gerar ZIP
 const content = await zip.generateAsync({type:"blob"});
 
 saveAs(content,"diplomas_equipa.zip");
