@@ -43,14 +43,11 @@ document.getElementById("athleteResults").innerHTML = "";
 return;
 }
 
-const results = atletas.filter(a => {
-
-const match =
+const results = atletas.filter(a =>
 (a["NOME"] && a["NOME"].toLowerCase().includes(q)) ||
-(a["ATLETA Nº"] && a["ATLETA Nº"].toString().includes(q));
-
-const temTempoValido = provas.some(p => isValidTime(a[p]));
-
+(a["ATLETA Nº"] && a["ATLETA Nº"].toString().includes(q))
+);
+  
 return match && temTempoValido;
 
 });
@@ -146,11 +143,16 @@ return k ? obj[k] : "";
 
 }
 
-async function gerarDiploma(index){
+async function gerarDiploma(numero){
 
-const atleta = atletas[index];
+const atleta = atletas.find(a =>
+a["ATLETA Nº"].toString() === numero.toString()
+);
 
-console.log(atleta);
+if(!atleta){
+console.error("Atleta não encontrado");
+return;
+}
 
 const template = document.getElementById("diplomaTemplate");
 
