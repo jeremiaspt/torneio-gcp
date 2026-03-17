@@ -760,6 +760,10 @@ margin:5px;
 color:#0c2d57;
 }
 
+.diploma-header h1:last-of-type{
+margin-bottom:20px;
+}
+
 .diploma-header h2{
 margin:5px;
 font-weight:normal;
