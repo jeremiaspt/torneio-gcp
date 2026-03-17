@@ -195,7 +195,7 @@ resultados.appendChild(linha);
 }
 
 const canvas = await html2canvas(template, {
-  scale: 4,
+  scale: 2,
   useCORS: true
 });
 
@@ -211,93 +211,5 @@ const pdf = new jspdf.jsPDF({
 
 pdf.addImage(imgData, "PNG", 15, 15, 267, 180);
 pdf.save("diploma_"+atleta["NOME"]+".pdf");
-
-}
-
-async function downloadTeamDiplomas(){
-
-const team = prompt("Nome da equipa:");
-
-if(!team) return;
-
-const atletasTeam = atletas.filter(a => a.clube === team);
-
-gerarDiplomasLote(atletasTeam);
-
-}
-
-function downloadTeamDiplomas(){
-
-const team = prompt("Nome da equipa:");
-
-if(!team) return;
-
-const atletasEquipa = atletas.filter(a =>
-a["CLUBE"] &&
-a["CLUBE"].toLowerCase().includes(team.toLowerCase())
-);
-
-if(atletasEquipa.length === 0){
-alert("Nenhum atleta encontrado.");
-return;
-}
-
-alert(atletasEquipa.length + " atletas encontrados");
-
-gerarDiplomasLote(atletasEquipa);
-
-}
-
-async function gerarDiplomasLote(lista){
-
-const zip = new JSZip();
-
-for(const atleta of lista){
-
-const blob = await gerarPDFdoAtleta(atleta);
-
-const nome = atleta["NOME"] || atleta["Nome"] || "atleta";
-
-zip.file(`${nome}.pdf`, blob);
-
-}
-
-const content = await zip.generateAsync({
-type:"blob",
-compression:"DEFLATE"
-});
-
-saveAs(content,"diplomas_equipa.zip");
-
-}
-
-async function gerarPDFdoAtleta(atletaObj){
-
-// usar a mesma variável global do site
-window.atleta = atletaObj;
-
-// atualizar template
-gerarDiploma();
-
-await new Promise(r => setTimeout(r,80));
-
-const element = document.getElementById("diplomaTemplate");
-
-const canvas = await html2canvas(element,{
-scale:2,
-useCORS:true
-});
-
-const imgData = canvas.toDataURL("image/jpeg",0.9);
-
-const pdf = new jspdf.jsPDF({
-orientation:"landscape",
-unit:"mm",
-format:"a4"
-});
-
-pdf.addImage(imgData,"JPEG",10,10,277,190);
-
-return pdf.output("blob");
 
 }
