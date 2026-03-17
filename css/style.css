@@ -779,10 +779,9 @@ margin-bottom:25px;
 
 .diploma-result{
 display:flex;
-justify-content:center;
-gap:40px;
-
+justify-content:space-between;
 width:420px;
+margin:4px auto;
 font-size:16px;
 }
 
