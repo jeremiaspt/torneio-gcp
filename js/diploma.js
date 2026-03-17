@@ -233,8 +233,12 @@ const team = prompt("Nome da equipa:");
 if(!team) return;
 
 const atletasEquipa = atletas.filter(a =>
-a.clube.toLowerCase() === team.toLowerCase()
+a.clube && a.clube.toLowerCase() === team.toLowerCase()
 );
+
+console.log("Atletas encontrados:", atletasEquipa);
+
+alert(atletasEquipa.length + " atletas encontrados");
 
 if(atletasEquipa.length === 0){
 alert("Nenhum atleta encontrado.");
@@ -251,7 +255,9 @@ const zip = new JSZip();
 
 for(const atleta of lista){
 
-await gerarDiploma(atleta);
+gerarDiploma(atleta);
+
+await new Promise(r => setTimeout(r,100));
 
 const canvas = await html2canvas(
 document.getElementById("diplomaTemplate"),
