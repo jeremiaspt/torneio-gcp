@@ -725,15 +725,27 @@ font-weight:bold;
 
 .diploma-pdf{
 width:1000px;
+height:700px;
 padding:60px;
 background:white;
 border:8px solid #0c2d57;
 text-align:center;
 font-family:Arial;
 
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+
 position:fixed;
 top:-9999px;
 left:-9999px;
+}
+
+.diploma-body{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
 }
 
 .diploma-header img{
@@ -752,8 +764,9 @@ font-weight:normal;
 }
 
 .diploma-name{
-font-size:36px;
+font-size:42px;
 font-weight:bold;
+letter-spacing:1px;
 margin:30px 0;
 }
 
@@ -766,11 +779,20 @@ margin-bottom:25px;
 display:flex;
 justify-content:center;
 gap:40px;
-margin:4px 0;
+margin:6px 0;
 font-size:16px;
+min-width:400px;
 }
 
 .diploma-footer{
-margin-top:40px;
 font-size:14px;
+margin-top:20px;
+}
+
+#pdfResultados{
+min-height:160px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:6px;
 }
