@@ -274,7 +274,7 @@ saveAs(content,"diplomas_equipa.zip");
 async function gerarPDFdoAtleta(atleta){
 
 // atualizar template
-preencherDiploma(atleta);
+gerarDiploma(atleta);
 
 await new Promise(r => setTimeout(r,80));
 
