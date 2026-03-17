@@ -27,14 +27,41 @@ document.getElementById("athleteResults").innerHTML = "";
 return;
 }
 
-const results = atletas.filter(a =>
+const results = atletas.filter(a => {
 
+const match =
 (a["NOME"] && a["NOME"].toLowerCase().includes(q)) ||
-(a["ATLETA Nº"] && a["ATLETA Nº"].toString().includes(q))
+(a["ATLETA Nº"] && a["ATLETA Nº"].toString().includes(q));
 
-);
+const provas = [
+"25M LIVRES",
+"50M LIVRES",
+"25M MARIPOSA",
+"50M MARIPOSA",
+"25M COSTAS",
+"50M COSTAS",
+"25M BRUÇOS",
+"50M BRUÇOS",
+"100M ESTILOS"
+];
+
+const temTempoValido = provas.some(p => isValidTime(a[p]));
+
+return match && temTempoValido;
+
+});
 
 renderAthletes(results);
+
+}
+
+function isValidTime(t){
+
+if(!t) return false;
+
+const invalid = ["X","DNF","DNS","DSQ",""];
+
+return !invalid.includes(t.trim().toUpperCase());
 
 }
 
@@ -77,7 +104,7 @@ provas.forEach(p => {
 
 const tempo = a[p];
 
-if(tempo && tempo !== "X"){
+if(isValidTime(tempo)){
 
 html += `
 <div class="result-row">
@@ -166,7 +193,7 @@ provas.forEach(p=>{
 
 const tempo = atleta[p];
 
-if(tempo && tempo!=="X"){
+if(isValidTime(tempo)){
 listaResultados.push({prova:p, tempo:tempo});
 }
 
