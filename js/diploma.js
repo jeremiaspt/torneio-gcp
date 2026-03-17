@@ -226,6 +226,25 @@ gerarDiplomasLote(atletasTeam);
 
 }
 
+function downloadTeamDiplomas(){
+
+const team = prompt("Nome da equipa:");
+
+if(!team) return;
+
+const atletasEquipa = atletas.filter(a =>
+a.clube.toLowerCase() === team.toLowerCase()
+);
+
+if(atletasEquipa.length === 0){
+alert("Nenhum atleta encontrado.");
+return;
+}
+
+gerarDiplomasLote(atletasEquipa);
+
+}
+
 async function gerarDiplomasLote(lista){
 
 const zip = new JSZip();
