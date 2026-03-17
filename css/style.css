@@ -730,7 +730,9 @@ background:white;
 border:8px solid #0c2d57;
 text-align:center;
 font-family:Arial;
-position:absolute;
+
+position:fixed;
+top:-9999px;
 left:-9999px;
 }
 
