@@ -254,20 +254,38 @@ const zip = new JSZip();
 
 for(const atleta of lista){
 
-// gerar diploma no template
-gerarDiploma(atleta);
+const blob = await gerarPDFdoAtleta(atleta);
 
-// pequeno delay para render
-await new Promise(r => setTimeout(r,120));
+const nome = atleta["NOME"] || atleta["Nome"] || "atleta";
+
+zip.file(`${nome}.pdf`, blob);
+
+}
+
+const content = await zip.generateAsync({
+type:"blob",
+compression:"DEFLATE"
+});
+
+saveAs(content,"diplomas_equipa.zip");
+
+}
+
+async function gerarPDFdoAtleta(atleta){
+
+// atualizar template
+preencherDiploma(atleta);
+
+await new Promise(r => setTimeout(r,80));
 
 const element = document.getElementById("diplomaTemplate");
 
 const canvas = await html2canvas(element,{
-scale:3,
+scale:2,
 useCORS:true
 });
 
-const imgData = canvas.toDataURL("image/png");
+const imgData = canvas.toDataURL("image/jpeg",0.9);
 
 const pdf = new jspdf.jsPDF({
 orientation:"landscape",
@@ -275,20 +293,8 @@ unit:"mm",
 format:"a4"
 });
 
-pdf.addImage(imgData,"PNG",10,10,277,190);
+pdf.addImage(imgData,"JPEG",10,10,277,190);
 
-const blob = pdf.output("blob");
-
-// nome do ficheiro
-const nome = atleta["NOME"] || atleta["Nome"] || "atleta";
-
-zip.file(`${nome}.pdf`, blob);
-
-}
-
-// gerar ZIP
-const content = await zip.generateAsync({type:"blob"});
-
-saveAs(content,"diplomas_equipa.zip");
+return pdf.output("blob");
 
 }
