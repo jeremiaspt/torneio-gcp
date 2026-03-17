@@ -213,3 +213,50 @@ pdf.addImage(imgData, "PNG", 15, 15, 267, 180);
 pdf.save("diploma_"+atleta["NOME"]+".pdf");
 
 }
+
+async function downloadTeamDiplomas(){
+
+const team = prompt("Nome da equipa:");
+
+if(!team) return;
+
+const atletasTeam = atletas.filter(a => a.clube === team);
+
+gerarDiplomasLote(atletasTeam);
+
+}
+
+async function gerarDiplomasLote(lista){
+
+const zip = new JSZip();
+
+for(const atleta of lista){
+
+await gerarDiploma(atleta);
+
+const canvas = await html2canvas(
+document.getElementById("diplomaTemplate"),
+{scale:3}
+);
+
+const imgData = canvas.toDataURL("image/png");
+
+const pdf = new jspdf.jsPDF({
+orientation:"landscape",
+unit:"mm",
+format:"a4"
+});
+
+pdf.addImage(imgData,"PNG",10,10,277,190);
+
+const blob = pdf.output("blob");
+
+zip.file(`${atleta.nome}.pdf`, blob);
+
+}
+
+const content = await zip.generateAsync({type:"blob"});
+
+saveAs(content,"diplomas_equipa.zip");
+
+}
