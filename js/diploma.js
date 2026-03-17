@@ -273,8 +273,11 @@ saveAs(content,"diplomas_equipa.zip");
 
 async function gerarPDFdoAtleta(atleta){
 
-// atualizar template
-gerarDiploma(atleta);
+// usar o mesmo atleta que o sistema usa
+selectedAthlete = atleta;
+
+// atualizar o template
+gerarDiploma();
 
 await new Promise(r => setTimeout(r,80));
 
