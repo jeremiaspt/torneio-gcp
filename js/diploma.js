@@ -199,7 +199,7 @@ const canvas = await html2canvas(template, {
   useCORS: true
 });
 
-const imgData = canvas.toDataURL("image/png");
+const imgData = canvas.toDataURL("image/jpeg",0.9);
 
 const { jsPDF } = window.jspdf;
 
