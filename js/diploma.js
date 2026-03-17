@@ -209,7 +209,7 @@ const pdf = new jspdf.jsPDF({
     format: "a4"
 });
 
-pdf.addImage(imgData, "PNG", 10, 10, 277, 190);
+pdf.addImage(imgData, "PNG", 15, 15, 267, 180);
 pdf.save("diploma_"+atleta["NOME"]+".pdf");
 
 }
