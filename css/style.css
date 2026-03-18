@@ -812,7 +812,7 @@ position:relative;
 }
 
 .signature-img{
-height:60px;
+height:90px;
 position:relative;
 z-index:2;   /* assinatura por cima */
 }
