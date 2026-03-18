@@ -8,7 +8,10 @@ const menu = document.querySelector(".menu");
 const overlay = document.querySelector(".overlay");
 
 menu.classList.toggle("open");
+
+if(overlay){
 overlay.classList.toggle("show");
+}
 
 }
 
