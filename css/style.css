@@ -751,8 +751,8 @@ justify-content:center;
 }
 
 .diploma-header img{
-height:80px;
-margin-bottom:10px;
+height:120px;
+margin-bottom:5px;
 }
 
 .diploma-header h1{
@@ -761,7 +761,7 @@ color:#0c2d57;
 }
 
 .diploma-header h1:last-of-type{
-margin-bottom:20px;
+margin-bottom:10px;
 }
 
 .diploma-header h2{
