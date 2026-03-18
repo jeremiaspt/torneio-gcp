@@ -730,9 +730,8 @@ padding:50px;
 
 background:white;
 
-border:3px solid #0c2d57;      /* borda interior */
-outline:3px solid #c9a000;     /* borda exterior */
-outline-offset:6px;            /* espaço entre bordas */
+border:3px solid #0c2d57;   /* borda interior */
+box-shadow:0 0 0 8px #c9a000; /* borda exterior */
 
 text-align:center;
 font-family:Arial;
